@@ -4,7 +4,7 @@ A modern task management app built with **Next.js App Router**, **Tailwind CSS**
 Manage your tasks in a Kanban board, and track progress visually with an interactive 3D cube.
 
 ### 🚀 Live Demo
-[Vercel Deployment](https://your-vercel-link.vercel.app/)
+[Vercel Deployment](https://3-d-to-do-kanban-board.vercel.app/)
 
 ---
 
