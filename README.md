@@ -1,7 +1,7 @@
-# 3D To-Do Kanban Board
+# 3D To-Do List App
 
-A modern task management app built with **Next.js App Router**, **Tailwind CSS**, and **React Three Fiber (Three.js)**.  
-Manage your tasks in a Kanban board, and track progress visually with an interactive 3D cube.
+A personal to-do list app built with **Next.js App Router**, **Tailwind CSS**, and **React Three Fiber (Three.js)**.  
+Tasks are managed in local state, and progress is visualized with a creative 3D cube.
 
 ### 🚀 Live Demo
 [Vercel Deployment](https://3-d-to-do-kanban-board.vercel.app/)
@@ -9,11 +9,10 @@ Manage your tasks in a Kanban board, and track progress visually with an interac
 ---
 
 ## ✨ Features
-- 📌 Kanban board (Todo / In Progress / Done)
-- 🎨 Clean Tailwind UI with dark/light mode
-- 🧩 React Context state management
-- 🔄 Add, update, delete tasks
-- 💾 (Optional) LocalStorage persistence
+- ✅ Simple to-do list (add and mark tasks as complete)
+- 🎨 Clean Tailwind UI with light/dark mode
+- 🧩 State management with React Context
+- 💾 Frontend-only (local state, no backend)
 - 🧊 3D Cube progress visualization (React Three Fiber + Drei)
 
 ---
