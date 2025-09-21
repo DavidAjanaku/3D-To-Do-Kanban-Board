@@ -28,7 +28,7 @@ Manage your tasks in a Kanban board, and track progress visually with an interac
 
 ## 📦 Installation
 ```bash
-git clone https://github.com/your-username/3d-todo-app.git
+git clone [https://github.com/your-username/3d-todo-app.git](https://github.com/DavidAjanaku/3D-To-Do-Kanban-Board.git)
 cd 3d-todo-app
 npm install
 npm run dev
