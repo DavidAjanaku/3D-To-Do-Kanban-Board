@@ -24,7 +24,7 @@ export default function TaskColumn({ title, tasks, status, count }: TaskColumnPr
           isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'
         }`}>
           <img
-            src="../assets/Plus.png"
+            src="./assets/Plus.png"
             alt="Add task"
             className={`w-4 h-4 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
           />

@@ -51,7 +51,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         <h3 className={`font-medium text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}>{task.title}</h3>
         <button className={`transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
           <img 
-            src="../assets/more.png" 
+            src="./assets/more.png" 
             alt="more options" 
             className={`w-6 h-6 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
           />
@@ -63,7 +63,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <img 
-            src="../assets/icon.png" 
+            src="./assets/icon.png" 
             alt="progress icon" 
             className={`w-4 h-4 ${isDark ? 'filter invert opacity-60' : ''}`}
           />

@@ -19,7 +19,7 @@ export default function KanbanBoard() {
           {/* Active tab with underline */}
           <div className={`flex items-center gap-2 pb-4 border-b-2 ${isDark ? 'border-white' : 'border-black'} whitespace-nowrap`}>
             <img
-              src="../assets/icons.png"
+              src="./assets/icons.png"
               alt="board view icon"
               className={`w-4 h-4 ${isDark ? 'filter invert opacity-80' : ''}`}
             />
@@ -31,7 +31,7 @@ export default function KanbanBoard() {
             isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'
           }`}>
             <img
-              src="../assets/plus.png"
+              src="./assets/plus.png"
               alt="add view"
               className={`w-4 h-4 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
             />
@@ -60,7 +60,7 @@ export default function KanbanBoard() {
               : 'border-gray-300 hover:bg-gray-50'
           }`}>
             <img
-              src="../assets/more.png"
+              src="./assets/more.png"
               alt="more options"
               className={`w-4 h-4 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
             />
