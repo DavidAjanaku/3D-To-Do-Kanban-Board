@@ -1,31 +1,64 @@
-import { Search, Bell, Calendar } from 'lucide-react';
-import image from '../../../public/assets/Image.png';
+import { Search } from 'lucide-react';
+import Image from 'next/image';
+import { useTheme } from '@/context/ThemeContext';
+import avatar from '../../../public/assets/Image.png';
+import notifications from '../../../public/assets/Notifications.png';
+import calendar from '../../../public/assets/Calender.png';
+import search from '../../../public/assets/Search.png';
 
 export default function Header() {
+  const { isDark } = useTheme();
+
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
+    <header className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b px-6 py-4`}>
       <div className="flex items-center justify-between">
+        {/* Left Side */}
         <div className="flex items-center gap-4">
-          <h1 className="text-xl pl-4 font-semibold text-gray-900">
+          <h1 className={`text-xl pl-4 font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
             Welcome back, Vincent 👋
           </h1>
         </div>
+
+        {/* Right Side */}
         <div className="flex items-center gap-4">
-          <button className="p-2 text-gray-400 hover:text-gray-600">
-            <Search size={20} />
+          <button className={`p-1 transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
+            <Image
+              src={search}
+              alt="Search"
+              width={20}
+              height={20}
+              className={isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}
+            />
           </button>
-          <button className="p-2 text-gray-400 hover:text-gray-600 relative">
-            <Bell size={20} />
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-[#FFA048] rounded-full"></span>
+          
+          <button className={`p-1 transition-colors relative ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
+            <Image
+              src={notifications}
+              alt="Notifications"
+              width={20}
+              height={20}
+              className={isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}
+            />
           </button>
-           <button className="p-2 text-gray-400 hover:text-gray-600">
-            <Calendar size={20} />
+          
+          <button className={`p-1 transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
+            <Image
+              src={calendar}
+              alt="Calendar"
+              width={20}
+              height={20}
+              className={isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}
+            />
           </button>
-          <span className="text-sm text-gray-500">19 May 2022</span>
-          <img 
-            src={image.src} 
-            alt="Vincent" 
-            className="w-8 h-8 rounded-full object-cover"
+          
+          <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>19 May 2022</span>
+          
+          <Image
+            src={avatar}
+            alt="Vincent"
+            width={32}
+            height={32}
+            className="rounded-full object-cover"
           />
         </div>
       </div>
