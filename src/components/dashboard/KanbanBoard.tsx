@@ -19,7 +19,7 @@ export default function KanbanBoard() {
     {/* Active tab with black underline */}
     <div className="flex items-center gap-2 pb-4 border-b-2 border-black">
       <img 
-        src="/assets/icons.png" 
+        src="../assets/icons.png" 
         alt="board view icon" 
         className="w-4 h-4"
       />
@@ -29,7 +29,7 @@ export default function KanbanBoard() {
     {/* Inactive tab */}
     <button className="text-gray-500 hover:text-gray-700 flex items-center gap-2 transition-colors pb-4">
       <img 
-        src="/assets/plus.png" 
+        src="../assets/plus.png" 
         alt="add view" 
         className="w-4 h-4"
       />
@@ -46,7 +46,7 @@ export default function KanbanBoard() {
     </button>
     <button className="p-2 border border-gray-300 rounded-2xl hover:bg-gray-50 transition-colors">
       <img 
-        src="/assets/more.png" 
+        src="../assets/more.png" 
         alt="more options" 
         className="w-4 h-4"
       />

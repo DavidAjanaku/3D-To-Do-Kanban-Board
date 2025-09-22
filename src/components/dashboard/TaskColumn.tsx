@@ -20,7 +20,7 @@ export default function TaskColumn({ title, tasks, status, count }: TaskColumnPr
         </div>
       <button className="text-gray-400 hover:text-gray-600 p-1 flex items-center gap-1 text-sm">
   <img 
-    src="/assets/Plus.png" 
+    src="../assets/Plus.png" 
     alt="Add task" 
     className="w-4 h-4"
   />

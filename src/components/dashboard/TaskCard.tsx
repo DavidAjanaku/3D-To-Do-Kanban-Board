@@ -48,7 +48,7 @@ export default function TaskCard({ task }: TaskCardProps) {
         <h3 className="font-medium text-gray-900 text-sm">{task.title}</h3>
  <button className="text-gray-400 hover:text-gray-600">
           <img 
-            src="assets/more.png" 
+            src="../assets/more.png" 
             alt="more options" 
             className="w-6 h-6"
           />
@@ -60,7 +60,7 @@ export default function TaskCard({ task }: TaskCardProps) {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <img 
-            src="assets/icon.png" 
+            src="../assets/icon.png" 
             alt="progress icon" 
             className="w-4 h-4"
           />
