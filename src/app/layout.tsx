@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Exo_2 } from 'next/font/google'; // ⬅️ change here
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+// Load Exo 2 instead of Inter
+const exo2 = Exo_2({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'], // pick the weights you’ll use
+});
 
 export const metadata: Metadata = {
   title: '3D Todo Kanban Board',
@@ -16,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={exo2.className}>{children}</body>
     </html>
   );
 }
