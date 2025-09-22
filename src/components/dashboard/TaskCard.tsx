@@ -3,7 +3,9 @@ import Avatar from '@/components/ui/Avatar';
 import ProgressBar from './ProgressBar';
 import { Task } from '@/types';
 import { useTheme } from '@/context/ThemeContext';
-
+import more from '../../../public/assets/More.png';
+import icon from '../../../public/assets/Icon.png';
+import Image from 'next/image';
 interface TaskCardProps {
   task: Task;
 }
@@ -50,8 +52,8 @@ export default function TaskCard({ task }: TaskCardProps) {
       <div className="flex justify-between items-start mb-2">
         <h3 className={`font-medium text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}>{task.title}</h3>
         <button className={`transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
-          <img 
-            src="./assets/more.png" 
+          <Image 
+            src={more} 
             alt="more options" 
             className={`w-6 h-6 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
           />
@@ -62,8 +64,8 @@ export default function TaskCard({ task }: TaskCardProps) {
       
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <img 
-            src="./assets/icon.png" 
+          <Image 
+            src={icon}
             alt="progress icon" 
             className={`w-4 h-4 ${isDark ? 'filter invert opacity-60' : ''}`}
           />

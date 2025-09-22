@@ -2,7 +2,9 @@ import { Plus } from 'lucide-react';
 import TaskCard from './TaskCard';
 import { Task } from '@/types';
 import { useTheme } from '@/context/ThemeContext';
+import plus from '../../../public/assets/Plus.png';
 
+import Image from 'next/image';
 interface TaskColumnProps {
   title: string;
   tasks: Task[];
@@ -23,8 +25,8 @@ export default function TaskColumn({ title, tasks, status, count }: TaskColumnPr
         <button className={`flex items-center gap-1 text-sm p-1 transition-colors ${
           isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'
         }`}>
-          <img
-            src="./assets/Plus.png"
+          <Image
+            src={plus}
             alt="Add task"
             className={`w-4 h-4 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
           />
