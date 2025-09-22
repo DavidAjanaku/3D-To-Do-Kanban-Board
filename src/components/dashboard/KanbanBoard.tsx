@@ -20,7 +20,7 @@ export default function KanbanBoard() {
     <div className="flex-1 ml-5 flex flex-col min-h-0">
       <div className={`flex flex-col sm:flex-row sm:items-center justify-between mb-0 px-3 sm:px-6 py-4 ${isDark ? 'border-gray-700' : 'border-gray-200'} border-b flex-shrink-0 gap-4 sm:gap-0`}>
         <div className="flex items-center gap-3 sm:gap-6 overflow-x-auto">
-          <div className={`flex items-center gap-2 pb-4 border-b-2 ${isDark ? 'border-white' : 'border-black'} whitespace-nowrap`}>
+          <div className={`flex cursor-pointer items-center gap-2 pb-4 border-b-2 ${isDark ? 'border-white' : 'border-black'} whitespace-nowrap`}>
             <Image
               src={icon}
               alt="board view icon"
@@ -29,7 +29,7 @@ export default function KanbanBoard() {
             <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>Board view</span>
           </div>
           
-          <button className={`flex items-center gap-2 transition-colors pb-4 whitespace-nowrap ${
+          <button className={`flex cursor-pointer items-center gap-2 transition-colors pb-4 whitespace-nowrap ${
             isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'
           }`}>
             <Image
@@ -42,7 +42,7 @@ export default function KanbanBoard() {
         </div>
         
         <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-          <button className={`px-2 sm:px-4 py-2 font-semibold flex items-center gap-2 transition-colors text-xs sm:text-sm ${
+          <button className={`px-2 cursor-pointer sm:px-4 py-2 font-semibold flex items-center gap-2 transition-colors text-xs sm:text-sm ${
             isDark 
               ? 'border-gray-600 hover:bg-gray-700 text-gray-300' 
               : 'border-gray-300 hover:bg-gray-50 text-gray-700'
@@ -50,13 +50,13 @@ export default function KanbanBoard() {
             <span>Filter</span>
           </button>
           
-          <button className={`px-2 sm:px-4 py-2 transition-colors text-xs sm:text-sm ${
+          <button className={`px-2 cursor-pointer sm:px-4 py-2 transition-colors text-xs sm:text-sm ${
             isDark ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-50 text-gray-700'
           }`}>
             <span>Sort</span>
           </button>
           
-          <button className={`p-2 transition-colors ${
+          <button className={`p-2 cursor-pointer transition-colors ${
             isDark 
               ? 'border-gray-600 hover:bg-gray-700' 
               : 'border-gray-300 hover:bg-gray-50'
@@ -68,7 +68,7 @@ export default function KanbanBoard() {
             />
           </button>
           
-           <button className={`px-2 sm:px-4 py-2 rounded-3xl transition-colors text-xs sm:text-sm font-medium ${
+           <button className={`px-2 sm:px-4 py-2 cursor-pointer rounded-3xl transition-colors text-xs sm:text-sm font-medium ${
             isDark 
               ? 'bg-[#4B69FF] text-white hover:bg-[#3B5BFF]' 
               : 'bg-gray-900 text-white hover:bg-gray-800'

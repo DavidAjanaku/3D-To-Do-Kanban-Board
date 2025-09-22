@@ -18,6 +18,7 @@ import toolsIcon from '../../../public/assets/tool.png';
 import calenderIcon from '../../../public/assets/Calenders.png';
 import sunIcon from '../../../public/assets/sun.png';
 import moonIcon from '../../../public/assets/moon.png';
+import logoutIcon from '../../../public/assets/logout.svg';
 
 export default function Sidebar() {
   const [activeProject, setActiveProject] = useState('design-system');
@@ -84,31 +85,77 @@ export default function Sidebar() {
           ))}
         </div>
 
-        <div className={`${isDark ? 'bg-gray-700' : 'bg-gray-800'} rounded-full p-1 flex`}>
-          <button
-            onClick={() => setTheme(false)}
-            className={`p-2 rounded-full transition-colors ${
-              !isDark ? 'bg-white text-gray-900' : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
-          </button>
-          <button
-            onClick={() => setTheme(true)}
-            className={`p-2 rounded-full transition-colors ${
-              isDark ? 'bg-gray-600 text-white' : 'text-gray-400 hover:text-gray-200'
-            }`}
-          >
-            <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-          </button>
+      <div
+        className={`${
+          isDark ? 'bg-gray-900' : 'bg-[#1C1D22]'
+        } w-16 h-screen fixed left-0 top-0 flex flex-col items-center py-4 space-y-4 z-20`}
+      >
+        <div className="w-8 h-8 rounded-lg cursor-pointer flex items-center justify-center mb-4">
+          <Image
+            src={logoIcon}
+            alt="Logo"
+            width={20}
+            height={20}
+            className="rounded-sm"
+          />
         </div>
+      
+        <div className="flex flex-col space-y-4 flex-1">
+          {navigation.map(({ icon, label, active }) => (
+            <button
+              key={label}
+              className={`w-10 h-10 flex cursor-pointer items-center justify-center rounded-full transition-colors ${
+                active
+                  ? isDark
+                    ? 'bg-gray-700'
+                    : 'bg-gray-800'
+                  : isDark
+                  ? 'hover:bg-gray-700'
+                  : 'hover:bg-gray-800'
+              }`}
+              title={label}
+            >
+              <Image
+                src={icon}
+                alt={label}
+                width={20}
+                height={20}
+                className={`${
+                  isDark ? 'opacity-70' : 'opacity-60'
+                } transition-opacity hover:opacity-100`}
+              />
+            </button>
+          ))}
+        </div>
+      
+        {/* Logout button */}
+        <button
+          className={`w-10 h-10 flex cursor-pointer items-center justify-center rounded-full transition-colors ${
+            isDark
+              ? 'hover:bg-gray-700 text-gray-300'
+              : 'hover:bg-gray-800 text-gray-400'
+          }`}
+          title="Logout"
+          onClick={() => {
+            console.log('Logout clicked');
+          }}
+        >
+          <Image
+            src={logoutIcon}
+            alt="Logout"
+            width={20}
+            height={20}
+            className={`${isDark ? 'opacity-70' : 'opacity-60'} transition-opacity hover:opacity-100`}
+          />
+        </button>
+      </div>
       </div>
 
       <div className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} w-72 h-screen fixed left-16 top-0 border-r flex-col z-10 hidden lg:flex`}>
         <div className={`p-6 ${isDark ? 'border-gray-700' : 'border-gray-200'} border-b flex-shrink-0`}>
           <div className="flex items-center justify-between">
             <h1 className={`text-2xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h1>
-            <button className={`w-8 h-8 flex items-center justify-center rounded-full border transition-colors ${
+            <button className={`w-8 h-8 flex cursor-pointer items-center justify-center rounded-full border transition-colors ${
               isDark 
                 ? 'border-gray-600 hover:bg-gray-700 text-gray-300' 
                 : 'border-gray-200 hover:bg-gray-50 text-gray-600'
@@ -128,7 +175,7 @@ export default function Sidebar() {
             <div>
               <button
                 onClick={() => setProjectsExpanded(!projectsExpanded)}
-                className="flex items-center justify-between w-full py-2 mb-3"
+                className="flex items-center cursor-pointer justify-between w-full py-2 mb-3"
               >
                 <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</span>
                 {projectsExpanded ? (
@@ -152,7 +199,7 @@ export default function Sidebar() {
                         <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
                         <button
                           onClick={() => setActiveProject(id)}
-                          className={`w-full text-left py-2 pl-4 pr-3 ml-3 rounded-lg text-sm transition-colors ${
+                          className={`w-full text-left cursor-pointer py-2 pl-4 pr-3 ml-3 rounded-lg text-sm transition-colors ${
                             activeProject === id 
                               ? (isDark ? 'bg-gray-700 text-white font-medium' : 'bg-gray-100 text-gray-900 font-medium')
                               : (isDark ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900')

@@ -21,7 +21,7 @@ export default function Header() {
 
         {/* Right Side */}
         <div className="flex items-center gap-4">
-          <button className={`p-1 transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
+          <button className={`p-1 cursor-pointer transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
             <Image
               src={search}
               alt="Search"
@@ -31,7 +31,7 @@ export default function Header() {
             />
           </button>
           
-          <button className={`p-1 transition-colors relative ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
+          <button className={`p-1 transition-colors cursor-pointer relative ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
             <Image
               src={notifications}
               alt="Notifications"
@@ -41,7 +41,7 @@ export default function Header() {
             />
           </button>
           
-          <button className={`p-1 transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
+          <button className={`p-1 cursor-pointer transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
             <Image
               src={calendar}
               alt="Calendar"
@@ -58,7 +58,7 @@ export default function Header() {
             alt="Vincent"
             width={32}
             height={32}
-            className="rounded-full object-cover"
+            className="rounded-full cursor-pointer object-cover"
           />
         </div>
       </div>
