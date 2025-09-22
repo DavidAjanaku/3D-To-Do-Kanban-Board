@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { MoreHorizontal, MessageCircle, Eye, FileText } from 'lucide-react';
 import Avatar from '@/components/ui/Avatar';
 import ProgressBar from './ProgressBar';
@@ -6,12 +7,14 @@ import { useTheme } from '@/context/ThemeContext';
 import more from '../../../public/assets/More.png';
 import icon from '../../../public/assets/Icon.png';
 import Image from 'next/image';
+
 interface TaskCardProps {
   task: Task;
 }
 
 export default function TaskCard({ task }: TaskCardProps) {
   const { isDark } = useTheme();
+  const [isDragging, setIsDragging] = useState(false);
   
   const statusColors = {
     todo: 'border-l-orange-500',
@@ -47,8 +50,42 @@ export default function TaskCard({ task }: TaskCardProps) {
     }
   };
 
+  // Drag and drop handlers
+  const handleDragStart = (e: React.DragEvent) => {
+    setIsDragging(true);
+    e.dataTransfer.setData('application/json', JSON.stringify(task));
+    e.dataTransfer.effectAllowed = 'move';
+    
+    // Create a custom drag image with slight rotation
+    const dragImage = e.currentTarget.cloneNode(true) as HTMLElement;
+    dragImage.style.transform = 'rotate(5deg)';
+    dragImage.style.opacity = '0.8';
+    dragImage.style.position = 'absolute';
+    dragImage.style.top = '-1000px';
+    document.body.appendChild(dragImage);
+    e.dataTransfer.setDragImage(dragImage, 50, 50);
+    
+    // Clean up the drag image
+    setTimeout(() => {
+      if (document.body.contains(dragImage)) {
+        document.body.removeChild(dragImage);
+      }
+    }, 0);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
-    <div className={`${isDark ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:shadow-md'} rounded-lg p-4 shadow-sm transition-all duration-200`}>
+    <div 
+      draggable
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      className={`${isDark ? 'bg-gray-800 hover:bg-gray-750' : 'bg-white hover:shadow-md'} 
+        rounded-lg p-4 shadow-sm transition-all duration-200 cursor-grab active:cursor-grabbing
+        ${isDragging ? 'opacity-50 transform scale-95' : 'hover:scale-105'}`}
+    >
       <div className="flex justify-between items-start mb-2">
         <h3 className={`font-medium text-sm ${isDark ? 'text-white' : 'text-gray-900'}`}>{task.title}</h3>
         <button className={`transition-colors ${isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-400 hover:text-gray-600'}`}>
