@@ -35,11 +35,11 @@ export default function TaskCard({ task }: TaskCardProps) {
     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
     if (daysDiff <= 0) {
-      return isDark ? 'bg-red-900/50 text-red-300' : 'bg-red-100 text-red-700';
+      return isDark ? 'bg-gray-700 text-gray-300' : 'bg-red-100 text-red-700';
     } else if (daysDiff <= 3) {
-      return isDark ? 'bg-orange-900/50 text-orange-300' : 'bg-orange-100 text-orange-700';
+      return isDark ? 'bg-orange-800 text-orange-200' : 'bg-orange-100 text-orange-700';
     } else if (daysDiff <= 7) {
-      return isDark ? 'bg-yellow-900/50 text-yellow-300' : 'bg-yellow-100 text-yellow-700';
+      return isDark ? 'bg-yellow-800 text-yellow-200' : 'bg-yellow-100 text-yellow-700';
     } else {
       return isDark ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-600';
     }
