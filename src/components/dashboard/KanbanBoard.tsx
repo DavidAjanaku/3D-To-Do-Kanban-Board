@@ -44,7 +44,7 @@ export default function KanbanBoard() {
         </div>
         
         <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-          <button className={`px-3 sm:px-4 py-2 border rounded-lg flex items-center gap-2 transition-colors text-xs sm:text-sm ${
+          <button className={`px-2 sm:px-4 py-2 font-semibold flex items-center gap-2 transition-colors text-xs sm:text-sm ${
             isDark 
               ? 'border-gray-600 hover:bg-gray-700 text-gray-300' 
               : 'border-gray-300 hover:bg-gray-50 text-gray-700'
@@ -52,13 +52,13 @@ export default function KanbanBoard() {
             <span>Filter</span>
           </button>
           
-          <button className={`px-3 sm:px-4 py-2 transition-colors text-xs sm:text-sm ${
+          <button className={`px-2 sm:px-4 py-2 transition-colors text-xs sm:text-sm ${
             isDark ? 'hover:bg-gray-700 text-gray-300' : 'hover:bg-gray-50 text-gray-700'
           }`}>
             <span>Sort</span>
           </button>
           
-          <button className={`p-2 border rounded-2xl transition-colors ${
+          <button className={`p-2 transition-colors ${
             isDark 
               ? 'border-gray-600 hover:bg-gray-700' 
               : 'border-gray-300 hover:bg-gray-50'
@@ -66,11 +66,11 @@ export default function KanbanBoard() {
             <Image
               src={more}
               alt="more options"
-              className={`w-4 h-4 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
+              className={`w-6 h-6 ${isDark ? 'filter invert opacity-60 hover:opacity-80' : ''}`}
             />
           </button>
           
-           <button className={`px-3 sm:px-4 py-2 rounded-3xl transition-colors text-xs sm:text-sm font-medium ${
+           <button className={`px-2 sm:px-4 py-2 rounded-3xl transition-colors text-xs sm:text-sm font-medium ${
             isDark 
               ? 'bg-[#4B69FF] text-white hover:bg-[#3B5BFF]' 
               : 'bg-gray-900 text-white hover:bg-gray-800'

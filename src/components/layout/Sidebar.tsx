@@ -1,20 +1,23 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 import {
   Plus,
-  Target,
-  User,
-  Lightbulb,
-  BarChart3,
-  Calendar,
-  FileText,
-  Settings,
   ChevronRight,
   ChevronDown,
-  Sun,
-  Moon
 } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
+
+// Import your custom images
+import personIcon from '../../../public/assets/person.png';
+import appIcon from '../../../public/assets/app.png';
+import mapIcon from '../../../public/assets/map.png';
+import logoIcon from '../../../public/assets/Logo.png';
+import downloadIcon from '../../../public/assets/download.png';
+import statsIcon from '../../../public/assets/stats.png';
+import toolsIcon from '../../../public/assets/tool.png';
+import calenderIcon from '../../../public/assets/Calenders.png';
+
 
 export default function Sidebar() {
   const [activeProject, setActiveProject] = useState('design-system');
@@ -29,13 +32,13 @@ export default function Sidebar() {
   ];
 
   const navigation = [
-    { icon: BarChart3, label: 'Dashboard' },
-    { icon: User, label: 'Team' },
-    { icon: Target, label: 'Projects', active: true },
-    { icon: Calendar, label: 'Calendar' },
-    { icon: FileText, label: 'Documents' },
-    { icon: BarChart3, label: 'Analytics' },
-    { icon: Settings, label: 'Settings' }
+    { icon: appIcon, label: 'Projects', active: true },
+    { icon: personIcon, label: 'Team' },
+    { icon: calenderIcon, label: 'Analytics' },
+    { icon: statsIcon, label: 'Dashboard' },
+    { icon: downloadIcon, label: 'Documents' },
+    { icon: mapIcon, label: 'Calendar' },
+    { icon: toolsIcon, label: 'Settings' }
   ];
 
   const taskCounts = [
@@ -49,12 +52,18 @@ export default function Sidebar() {
     <div className="flex">
       {/* Left Icon Sidebar */}
       <div className={`${isDark ? 'bg-gray-900' : 'bg-[#1C1D22]'} w-16 h-screen fixed left-0 top-0 flex flex-col items-center py-4 space-y-4 z-20`}>
-        <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center mb-4">
-          <div className="w-4 h-4 bg-gray-900 rounded-sm"></div>
+        <div className="w-8 h-8  rounded-lg flex items-center justify-center mb-4">
+          <Image 
+            src={logoIcon} 
+            alt="Logo" 
+            width={20} 
+            height={20} 
+            className="rounded-sm"
+          />
         </div>
 
         <div className="flex flex-col space-y-4 flex-1">
-          {navigation.map(({ icon: Icon, label, active }, index) => (
+          {navigation.map(({ icon, label, active }, index) => (
             <button
               key={label}
               className={`w-10 h-10 flex items-center justify-center rounded-lg transition-colors ${
@@ -64,7 +73,13 @@ export default function Sidebar() {
               }`}
               title={label}
             >
-              <Icon size={20} className={isDark ? 'text-gray-300' : 'text-gray-400'} />
+              <Image 
+                src={icon} 
+                alt={label} 
+                width={20} 
+                height={20} 
+                className={`${isDark ? 'opacity-70' : 'opacity-60'} transition-opacity hover:opacity-100`}
+              />
             </button>
           ))}
         </div>
@@ -76,7 +91,8 @@ export default function Sidebar() {
               !isDark ? 'bg-white text-gray-900' : 'text-gray-400 hover:text-gray-200'
             }`}
           >
-            <Sun size={16} />
+            {/* You can replace these with sun/moon images if you have them */}
+            <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
           </button>
           <button
             onClick={() => setTheme(true)}
@@ -84,7 +100,8 @@ export default function Sidebar() {
               isDark ? 'bg-gray-600 text-white' : 'text-gray-400 hover:text-gray-200'
             }`}
           >
-            <Moon size={16} />
+            {/* You can replace these with sun/moon images if you have them */}
+            <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
           </button>
         </div>
       </div>
@@ -125,23 +142,33 @@ export default function Sidebar() {
               </button>
 
               {projectsExpanded && (
-                <div className="space-y-1 ml-4">
-                  <div className={`text-sm py-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                    All projects (3)
+                <div className="relative ml-4">
+                  {/* Vertical line */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
+                  
+                  <div className="space-y-1">
+                    <div className={`relative text-sm py-1 pl-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                      {/* Horizontal connecting line */}
+                      <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
+                      All projects (3)
+                    </div>
+                    {projects.map(({ id, name }) => (
+                      <div key={id} className="relative">
+                        {/* Horizontal connecting line */}
+                        <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
+                        <button
+                          onClick={() => setActiveProject(id)}
+                          className={`w-full text-left py-2 pl-4 pr-3 ml-3 rounded-lg text-sm transition-colors ${
+                            activeProject === id 
+                              ? (isDark ? 'bg-gray-700 text-white font-medium' : 'bg-gray-100 text-gray-900 font-medium')
+                              : (isDark ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900')
+                          }`}
+                        >
+                          {name}
+                        </button>
+                      </div>
+                    ))}
                   </div>
-                  {projects.map(({ id, name }) => (
-                    <button
-                      key={id}
-                      onClick={() => setActiveProject(id)}
-                      className={`w-full text-left py-2 px-3 rounded-lg text-sm transition-colors ${
-                        activeProject === id 
-                          ? (isDark ? 'bg-gray-700 text-white font-medium' : 'bg-gray-100 text-gray-900 font-medium')
-                          : (isDark ? 'text-gray-300 hover:bg-gray-700 hover:text-white' : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900')
-                      }`}
-                    >
-                      {name}
-                    </button>
-                  ))}
                 </div>
               )}
             </div>
@@ -160,20 +187,29 @@ export default function Sidebar() {
               </button>
 
               {tasksExpanded && (
-                <div className="space-y-1 ml-4">
-                  {taskCounts.map(({ label, count }) => (
-                    <div
-                      key={label}
-                      className={`flex items-center justify-between py-2 px-3 text-sm rounded-lg cursor-pointer transition-colors ${
-                        isDark 
-                          ? 'text-gray-300 hover:bg-gray-700' 
-                          : 'text-gray-600 hover:bg-gray-50'
-                      }`}
-                    >
-                      <span>{label}</span>
-                      <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>({count})</span>
-                    </div>
-                  ))}
+                <div className="relative ml-4">
+                  {/* Vertical line */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
+                  
+                  <div className="space-y-1">
+                    {taskCounts.map(({ label, count }) => (
+                      <div
+                        key={label}
+                        className="relative"
+                      >
+                        {/* Horizontal connecting line */}
+                        <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
+                        <div className={`flex items-center justify-between py-2 pl-1 pr-3 ml-3 text-sm rounded-lg cursor-pointer transition-colors ${
+                          isDark 
+                            ? 'text-gray-300 hover:bg-gray-700' 
+                            : 'text-gray-600 hover:bg-gray-50'
+                        }`}>
+                          <span>{label}</span>
+                          <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>({count})</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -200,7 +236,7 @@ export default function Sidebar() {
                   : (isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900')
               }`}
             >
-              <Sun size={16} />
+              <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
               Light
             </button>
             <button
@@ -211,7 +247,7 @@ export default function Sidebar() {
                   : (isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900')
               }`}
             >
-              <Moon size={16} />
+              <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
               Dark
             </button>
           </div>
