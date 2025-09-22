@@ -6,6 +6,8 @@ import { Task } from '@/types';
 import { useTheme } from '@/context/ThemeContext';
 import more from '../../../public/assets/More.png';
 import icon from '../../../public/assets/Icon.png';
+import messageIcon from '../../../public/assets/message.png';
+import paperclipIcon from '../../../public/assets/paperclip.png';
 import Image from 'next/image';
 
 interface TaskCardProps {
@@ -28,7 +30,6 @@ export default function TaskCard({ task }: TaskCardProps) {
     high: 'bg-red-400'
   };
 
-  // Function to determine date background color based on due date and status
   const getDateBackgroundClass = (dueDate: string, status: string) => {
     if (status === 'done') {
       return isDark ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-600';
@@ -56,7 +57,6 @@ export default function TaskCard({ task }: TaskCardProps) {
     e.dataTransfer.setData('application/json', JSON.stringify(task));
     e.dataTransfer.effectAllowed = 'move';
     
-    // Create a custom drag image with slight rotation
     const dragImage = e.currentTarget.cloneNode(true) as HTMLElement;
     dragImage.style.transform = 'rotate(5deg)';
     dragImage.style.opacity = '0.8';
@@ -65,7 +65,6 @@ export default function TaskCard({ task }: TaskCardProps) {
     document.body.appendChild(dragImage);
     e.dataTransfer.setDragImage(dragImage, 50, 50);
     
-    // Clean up the drag image
     setTimeout(() => {
       if (document.body.contains(dragImage)) {
         document.body.removeChild(dragImage);
@@ -142,20 +141,28 @@ export default function TaskCard({ task }: TaskCardProps) {
               )}
             </div>
           ) : (
-            <div className="flex items-center gap-3">
-              {task.comments > 0 && (
-                <div className="flex items-center gap-1">
-                  <MessageCircle size={12} className={isDark ? 'text-gray-400' : 'text-gray-500'} />
-                  <span>{task.comments}</span>
-                </div>
-              )}
-              {task.attachments > 0 && (
-                <div className="flex items-center gap-1">
-                  <FileText size={12} className={isDark ? 'text-gray-400' : 'text-gray-500'} />
-                  <span>{task.attachments}</span>
-                </div>
-              )}
-            </div>
+          <div className="flex items-center gap-3">
+  {task.comments > 0 && (
+    <div className="flex items-center gap-1">
+      <Image 
+        src={messageIcon} 
+        alt="comments" 
+        className={`w-4 h-4 ${isDark ? 'filter invert opacity-70' : ''}`} 
+      />
+      <span>{task.comments}</span>
+    </div>
+  )}
+  {task.attachments > 0 && (
+    <div className="flex items-center gap-1">
+      <Image 
+        src={paperclipIcon} 
+        alt="attachments" 
+        className={`w-4 h-4 ${isDark ? 'filter invert opacity-70' : ''}`} 
+      />
+      <span>{task.attachments}</span>
+    </div>
+  )}
+</div>
           )}
         </div>
       </div>

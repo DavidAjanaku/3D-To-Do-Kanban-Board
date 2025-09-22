@@ -4,7 +4,6 @@ interface AvatarProps {
   className?: string;
 }
 
-// Sample profile images 
 const profileImages: { [key: string]: string } = {
   'John Doe': 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
   'Jane Smith': 'https://images.unsplash.com/photo-1494790108755-2616b9da8c3c?w=100&h=100&fit=crop&crop=face',
@@ -16,7 +15,6 @@ const profileImages: { [key: string]: string } = {
 };
 
 export default function Avatar({ src, alt, className = "" }: AvatarProps) {
-  // Use provided src, or look up profile image, or fallback to placeholder
   const imageUrl = src || profileImages[alt] || `https://ui-avatars.com/api/?name=${encodeURIComponent(alt)}&background=e5e7eb&color=6b7280`;
 
   return (

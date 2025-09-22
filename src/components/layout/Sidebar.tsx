@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
-// Import your custom images
 import personIcon from '../../../public/assets/person.png';
 import appIcon from '../../../public/assets/app.png';
 import mapIcon from '../../../public/assets/map.png';
@@ -17,7 +16,8 @@ import downloadIcon from '../../../public/assets/download.png';
 import statsIcon from '../../../public/assets/stats.png';
 import toolsIcon from '../../../public/assets/tool.png';
 import calenderIcon from '../../../public/assets/Calenders.png';
-
+import sunIcon from '../../../public/assets/sun.png';
+import moonIcon from '../../../public/assets/moon.png';
 
 export default function Sidebar() {
   const [activeProject, setActiveProject] = useState('design-system');
@@ -66,7 +66,7 @@ export default function Sidebar() {
           {navigation.map(({ icon, label, active }, index) => (
             <button
               key={label}
-              className={`w-10 h-10 flex items-center justify-center rounded-lg transition-colors ${
+              className={`w-10 h-10 flex items-center justify-center rounded-full transition-colors ${
                 active 
                   ? (isDark ? 'bg-gray-700' : 'bg-gray-800') 
                   : (isDark ? 'hover:bg-gray-700' : 'hover:bg-gray-800')
@@ -91,7 +91,6 @@ export default function Sidebar() {
               !isDark ? 'bg-white text-gray-900' : 'text-gray-400 hover:text-gray-200'
             }`}
           >
-            {/* You can replace these with sun/moon images if you have them */}
             <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
           </button>
           <button
@@ -100,18 +99,16 @@ export default function Sidebar() {
               isDark ? 'bg-gray-600 text-white' : 'text-gray-400 hover:text-gray-200'
             }`}
           >
-            {/* You can replace these with sun/moon images if you have them */}
             <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
           </button>
         </div>
       </div>
 
-      {/* Main Sidebar - Hidden on mobile, visible on large screens */}
       <div className={`${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} w-72 h-screen fixed left-16 top-0 border-r flex-col z-10 hidden lg:flex`}>
         <div className={`p-6 ${isDark ? 'border-gray-700' : 'border-gray-200'} border-b flex-shrink-0`}>
           <div className="flex items-center justify-between">
             <h1 className={`text-2xl font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Projects</h1>
-            <button className={`w-8 h-8 flex items-center justify-center rounded-lg border transition-colors ${
+            <button className={`w-8 h-8 flex items-center justify-center rounded-full border transition-colors ${
               isDark 
                 ? 'border-gray-600 hover:bg-gray-700 text-gray-300' 
                 : 'border-gray-200 hover:bg-gray-50 text-gray-600'
@@ -143,18 +140,15 @@ export default function Sidebar() {
 
               {projectsExpanded && (
                 <div className="relative ml-4">
-                  {/* Vertical line */}
                   <div className={`absolute left-0 top-0 bottom-0 w-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
                   
                   <div className="space-y-1">
                     <div className={`relative text-sm py-1 pl-4 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                      {/* Horizontal connecting line */}
                       <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
                       All projects (3)
                     </div>
                     {projects.map(({ id, name }) => (
                       <div key={id} className="relative">
-                        {/* Horizontal connecting line */}
                         <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
                         <button
                           onClick={() => setActiveProject(id)}
@@ -188,7 +182,6 @@ export default function Sidebar() {
 
               {tasksExpanded && (
                 <div className="relative ml-4">
-                  {/* Vertical line */}
                   <div className={`absolute left-0 top-0 bottom-0 w-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
                   
                   <div className="space-y-1">
@@ -197,7 +190,6 @@ export default function Sidebar() {
                         key={label}
                         className="relative"
                       >
-                        {/* Horizontal connecting line */}
                         <div className={`absolute left-0 top-1/2 w-3 h-px ${isDark ? 'bg-gray-600' : 'bg-gray-300'}`}></div>
                         <div className={`flex items-center justify-between py-2 pl-1 pr-3 ml-3 text-sm rounded-lg cursor-pointer transition-colors ${
                           isDark 
@@ -228,28 +220,41 @@ export default function Sidebar() {
 
         <div className={`p-6 ${isDark ? 'border-gray-700' : 'border-gray-200'} border-t flex-shrink-0`}>
           <div className={`${isDark ? 'bg-gray-700' : 'bg-gray-100'} rounded-full p-1 flex`}>
-            <button
-              onClick={() => setTheme(false)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
-                !isDark 
-                  ? (isDark ? 'bg-gray-600 text-white shadow-sm' : 'bg-white text-gray-900 shadow-sm')
-                  : (isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900')
-              }`}
-            >
-              <div className="w-4 h-4 bg-yellow-400 rounded-full"></div>
-              Light
-            </button>
-            <button
-              onClick={() => setTheme(true)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
-                isDark 
-                  ? (isDark ? 'bg-gray-600 text-white shadow-sm' : 'bg-white text-gray-900 shadow-sm')
-                  : (isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900')
-              }`}
-            >
-              <div className="w-4 h-4 bg-gray-300 rounded-full"></div>
-              Dark
-            </button>
+           <button
+  onClick={() => setTheme(false)}
+  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
+    !isDark 
+      ? 'bg-white text-gray-900 shadow-sm' 
+      : 'text-gray-300 hover:text-white'
+  }`}
+>
+  <Image 
+    src={sunIcon} 
+    alt="Light mode" 
+    width={16} 
+    height={16} 
+    className={`${!isDark ? '' : 'opacity-70'}`} 
+  />
+  Light
+</button>
+
+<button
+  onClick={() => setTheme(true)}
+  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2 ${
+    isDark 
+      ? 'bg-gray-600 text-white shadow-sm' 
+      : 'text-gray-600 hover:text-gray-900'
+  }`}
+>
+  <Image 
+    src={moonIcon} 
+    alt="Dark mode" 
+    width={16} 
+    height={16} 
+    className={`${isDark ? '' : 'opacity-70'}`} 
+  />
+  Dark
+</button>
           </div>
         </div>
       </div>

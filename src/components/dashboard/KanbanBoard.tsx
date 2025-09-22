@@ -20,7 +20,6 @@ export default function KanbanBoard() {
     <div className="flex-1 ml-5 flex flex-col min-h-0">
       <div className={`flex flex-col sm:flex-row sm:items-center justify-between mb-0 px-3 sm:px-6 py-4 ${isDark ? 'border-gray-700' : 'border-gray-200'} border-b flex-shrink-0 gap-4 sm:gap-0`}>
         <div className="flex items-center gap-3 sm:gap-6 overflow-x-auto">
-          {/* Active tab with underline */}
           <div className={`flex items-center gap-2 pb-4 border-b-2 ${isDark ? 'border-white' : 'border-black'} whitespace-nowrap`}>
             <Image
               src={icon}
@@ -30,7 +29,6 @@ export default function KanbanBoard() {
             <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>Board view</span>
           </div>
           
-          {/* Inactive tab */}
           <button className={`flex items-center gap-2 transition-colors pb-4 whitespace-nowrap ${
             isDark ? 'text-gray-400 hover:text-gray-200' : 'text-gray-500 hover:text-gray-700'
           }`}>

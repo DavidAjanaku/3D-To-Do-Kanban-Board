@@ -32,7 +32,6 @@ export default function TaskColumn({ title, tasks, status, count }: TaskColumnPr
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.preventDefault();
-    // Only set to false if we're actually leaving the column area
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX;
     const y = e.clientY;
@@ -49,7 +48,6 @@ export default function TaskColumn({ title, tasks, status, count }: TaskColumnPr
     try {
       const taskData = JSON.parse(e.dataTransfer.getData('application/json')) as Task;
       
-      // Don't do anything if dropped on the same column
       if (taskData.status === status) {
         return;
       }
@@ -134,7 +132,6 @@ export default function TaskColumn({ title, tasks, status, count }: TaskColumnPr
         </button>
       </div>
 
-      {/* Drop Zone Indicator - Only shows when dragging over */}
       {isDragOver && (
         <div className={`mb-4 p-6 border-2 border-dashed rounded-lg text-center transition-all duration-200 ${
           status === 'done' 
