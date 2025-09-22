@@ -1,5 +1,5 @@
 import { Search, Bell, Calendar } from 'lucide-react';
-import image from '../../assets/Image.png';
+import image from '../../../public/assets/Image.png';
 
 export default function Header() {
   return (

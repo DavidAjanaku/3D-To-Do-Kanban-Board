@@ -22,7 +22,6 @@ export default function TaskCard({ task }: TaskCardProps) {
 
   // Function to determine date background color based on due date and status
   const getDateBackgroundClass = (dueDate: string, status: string) => {
-    // If task is done, show grey background
     if (status === 'done') {
       return 'bg-gray-100 text-gray-600';
     }
@@ -32,20 +31,13 @@ export default function TaskCard({ task }: TaskCardProps) {
     const timeDiff = taskDueDate.getTime() - currentDate.getTime();
     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
-    // Overdue or due today - red background
     if (daysDiff <= 0) {
       return 'bg-red-100 text-red-700';
-    }
-    // Due within 3 days - orange background
-    else if (daysDiff <= 3) {
+    } else if (daysDiff <= 3) {
       return 'bg-orange-100 text-orange-700';
-    }
-    // Due within a week - yellow background
-    else if (daysDiff <= 7) {
+    } else if (daysDiff <= 7) {
       return 'bg-yellow-100 text-yellow-700';
-    }
-    // More than a week - grey background
-    else {
+    } else {
       return 'bg-gray-100 text-gray-600';
     }
   };
@@ -54,15 +46,26 @@ export default function TaskCard({ task }: TaskCardProps) {
     <div className={`bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow`}>
       <div className="flex justify-between items-start mb-2">
         <h3 className="font-medium text-gray-900 text-sm">{task.title}</h3>
-        <button className="text-gray-400 hover:text-gray-600">
-          <MoreHorizontal size={16} />
+ <button className="text-gray-400 hover:text-gray-600">
+          <img 
+            src="assets/more.png" 
+            alt="more options" 
+            className="w-6 h-6"
+          />
         </button>
       </div>
       
       <p className="text-xs text-gray-500 mb-3">{task.description}</p>
       
       <div className="flex items-center justify-between mb-3">
-        <span className="text-xs text-gray-600">Progress</span>
+        <div className="flex items-center gap-2">
+          <img 
+            src="assets/icon.png" 
+            alt="progress icon" 
+            className="w-4 h-4"
+          />
+          <span className="text-xs text-gray-600">Progress</span>
+        </div>
         <span className="text-xs font-medium text-gray-900">{task.progress}/10</span>
       </div>
       
